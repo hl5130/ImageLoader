@@ -4,6 +4,8 @@ import android.graphics.Bitmap
 
 class DoubleCache : ImageCache {
 
+    //TODO 本地和内存同时使用
+
     override fun put(url: String, bitmap: Bitmap) {
 
     }

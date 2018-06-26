@@ -4,6 +4,8 @@ import android.graphics.Bitmap
 
 class DiskCache : ImageCache {
 
+    // TODO  本地存储
+
     override fun put(url: String, bitmap: Bitmap) {
 
     }

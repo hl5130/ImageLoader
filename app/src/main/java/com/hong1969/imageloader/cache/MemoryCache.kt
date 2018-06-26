@@ -8,11 +8,7 @@ import android.support.v4.util.LruCache
  */
 class MemoryCache : ImageCache {
 
-    private lateinit var mImageCache: LruCache<String,Bitmap>
-
-    constructor () {
-        initLru()
-    }
+    private lateinit var mImageCache: LruCache<String, Bitmap>
 
     /**
      *  初始化内存缓存
@@ -24,7 +20,7 @@ class MemoryCache : ImageCache {
 
         // 2、取 1/4 做为缓存
         val cacheSize = maxMemory / 4
-        mImageCache = object : LruCache<String,Bitmap>(cacheSize){
+        mImageCache = object : LruCache<String, Bitmap>(cacheSize) {
             override fun sizeOf(key: String?, value: Bitmap?): Int {
                 if (value == null) return 0
                 return value.rowBytes * value.height / 1024
@@ -34,11 +30,15 @@ class MemoryCache : ImageCache {
 
 
     override fun put(url: String, bitmap: Bitmap) {
-        mImageCache.put(url,bitmap)
+        mImageCache.put(url, bitmap)
     }
 
     override fun get(url: String): Bitmap? {
         return mImageCache[url]
+    }
+
+    init {
+        initLru()
     }
 
 }
