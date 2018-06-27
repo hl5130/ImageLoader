@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory
 import android.os.Environment
 import android.support.v4.content.ContextCompat
 import android.util.Log
+import com.hong1969.imageloader.utils.CloseUtils
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -15,7 +16,6 @@ import java.io.IOException
  */
 class DiskCache(private val context: Context) : ImageCache {
 
-    // TODO  本地存储
 //
 //    private fun file(fileName: String): File {
 //        if (Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED){
@@ -46,14 +46,7 @@ class DiskCache(private val context: Context) : ImageCache {
             e.printStackTrace()
             Log.e("DiskCache", e.message)
         } finally {
-            if (fileOutputStream != null) {
-                try {
-                    fileOutputStream.close()
-                } catch (e: IOException) {
-                    e.printStackTrace()
-                    Log.e("DiskCache", e.message)
-                }
-            }
+            CloseUtils.closeQuietly(fileOutputStream)
         }
     }
 

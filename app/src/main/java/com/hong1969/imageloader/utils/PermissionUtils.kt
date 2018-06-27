@@ -1,9 +1,6 @@
-package com.hong1969.imageloader
+package com.hong1969.imageloader.utils
 
 import android.Manifest
-import android.Manifest.permission
-import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
-import android.Manifest.permission.READ_EXTERNAL_STORAGE
 import android.support.v4.app.ActivityCompat
 import android.content.pm.PackageManager
 import android.app.Activity
@@ -19,7 +16,7 @@ import android.app.Activity
  * <p>
  * 描述：
  */
-object PermisionUtils {
+object PermissionUtils {
     private const val REQUEST_EXTERNAL_STORAGE = 1
     private val PERMISSIONS_STORAGE = arrayOf(
             Manifest.permission.READ_EXTERNAL_STORAGE,
